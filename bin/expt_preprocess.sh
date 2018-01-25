@@ -459,19 +459,20 @@ fi
 # Need nest rmu in this case:
 if [ $tmp2 -eq 1  ] ; then
    # Nest relaxation - use file in  experiment dir if present. Otherwise look in nest dir
-   if [ -f $P/rmu_nest.a -a -f $P/rmu_nest.a ] ; then
-      echo "Using file $P/rmu_nest.[ab] for nesting relaxation: $P/rmu_nest.[ab] -> ./rmu.[ab]"
-      cp $P/rmu_nest.a rmu.a       || tellerror "Could not get port file ${P}/rmu_nest.a for nest relax"
-      cp $P/rmu_nest.b rmu.b       || tellerror "Could not get port file ${P}/rmu_nest.b for nest relax"
-   elif [ -f $nestdir/rmu_nest.a -a -f $nestdir/rmu_nest.a ] ; then
-      echo "Using file $nestdir/rmu_nest.[ab] for nesting: $nestdir/rmu_nest.[ab] -> ./rmu.[ab]"
-      cp $nestdir/rmu_nest.a rmu.a       || tellerror "Could not get port file ${nestdir}/rmu_nest.a for nest relax"
-      cp $nestdir/rmu_nest.b rmu.b       || tellerror "Could not get port file ${nestdir}/rmu_nest.b for nest relax"
-   if [ -f $nestdir/rmu.a -a -f $nestdir/rmu.b ] ; then
-      echo "Using file $nestdir/rmu.[ab] for nesting"
-   else 
-      tellerror "Could not find files $nestdir/rmu.[ab] for nest relaxation"
-   fi
+    if [ -f $P/rmu_nest.a -a -f $P/rmu_nest.a ] ; then
+        echo "Using file $P/rmu_nest.[ab] for nesting relaxation: $P/rmu_nest.[ab] -> ./rmu.[ab]"
+        cp $P/rmu_nest.a rmu.a       || tellerror "Could not get port file ${P}/rmu_nest.a for nest relax"
+        cp $P/rmu_nest.b rmu.b       || tellerror "Could not get port file ${P}/rmu_nest.b for nest relax"
+    elif [ -f $nestdir/rmu_nest.a -a -f $nestdir/rmu_nest.a ] ; then
+        echo "Using file $nestdir/rmu_nest.[ab] for nesting: $nestdir/rmu_nest.[ab] -> ./rmu.[ab]"
+        cp $nestdir/rmu_nest.a rmu.a       || tellerror "Could not get port file ${nestdir}/rmu_nest.a for nest relax"
+        cp $nestdir/rmu_nest.b rmu.b       || tellerror "Could not get port file ${nestdir}/rmu_nest.b for nest relax"
+    fi
+###     if [ -f $nestdir/rmu.a -a -f $nestdir/rmu.b ] ; then
+###           echo "Using file $nestdir/rmu.[ab] for nesting"
+###     else 
+###           tellerror "Could not find files $nestdir/rmu.[ab] for nest relaxation"
+###     fi   
 fi
 
 
@@ -637,6 +638,3 @@ fi
 
 # Tell where stuff ended up
 exit $numerr # Fails if any fatal errors occured
-
-
-
