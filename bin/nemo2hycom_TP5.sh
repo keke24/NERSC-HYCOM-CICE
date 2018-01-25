@@ -53,7 +53,7 @@ if [ $# -eq 1 ] ; then
 else
     echo "There are $# ncfiles input to nesting program"
 fi
-echo $ncfiles
+#echo $ncfiles
 
 #exit 0
 
@@ -64,10 +64,9 @@ else
     echo "Could not find EXPT.src. This script must be run in expt dir"
     exit 1
 fi
-source ${BASEDIR}/REGION.src || { echo "Could not source ${BASEDIR}/REGION.src" ; exit 1 ; }
-source EXPT.src || { echo "Could not source ./EXPT.src" ; exit 1 ; }
 
-nest_expt=${PWD}
+source EXPT.src || { echo "Could not source ./EXPT.src" ; exit 1 ; }
+source ${BASEDIR}/REGION.src || { echo "Could not source ${BASEDIR}/REGION.src" ; exit 1 ; }
 
 # add MESH file for root directory for nesting
 CDF_NEMO=${NESTROOT}/topo/GLO_MFC_001_24_MESH.nc
@@ -75,12 +74,6 @@ CDF_NEMO=${NESTROOT}/topo/GLO_MFC_001_24_MESH.nc
 # add nesting directory
 NESTDIR=${NESTROOT}/expt_${NESTEXPT}
 
-# delete previous files in NESTDIR if they exist
-ls -1 ${NESTDIR}/data/archv* > /dev/null 2>&1
-if [ "$?" = 0 ] ; then
-    echo "deleting previous archv files from ${NESTDIR}/data"
-    rm ${NESTDIR}/data/archv*
-fi
 
 ## get variables from blkdat.input
 iexpt=`grep "'iexpt ' =" blkdat.input | awk '{printf("%1d", $1)}'`
@@ -116,5 +109,6 @@ for source_archv in $ncfiles ; do
 	#remap_nemo_TP5.sh $(cat archvname.txt)
     echo $(cat archvname.txt)
     echo $source_archv
+    echo $nemo_archv
 	remap_nemo_TP5.sh ${nemo_archv}
 done

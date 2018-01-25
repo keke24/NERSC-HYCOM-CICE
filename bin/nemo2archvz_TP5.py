@@ -37,7 +37,7 @@ import logging
 
 
 # Set up logger
-_loglevel=logging.INFO
+_loglevel=logging.DEBUG
 logger = logging.getLogger(__name__)
 logger.setLevel(_loglevel)
 formatter = logging.Formatter("%(asctime)s - %(name)10s - %(levelname)7s: %(message)s")
