@@ -12,6 +12,8 @@ hycom/fabm/
 #--------
 TP4a0.12/
 TP5a0.12/
+!TP5a0.12/expt_01.0/
+!TP5a0.12/REGION.src
 NMOa0.08/
 !NMOa0.08/expt_01.0/
 !NMPa0.08/REGION.src
@@ -350,8 +352,6 @@ hycom/hycom_ALL/hycom_2.2.72_ALL/relax/src_2.2.35/z_gdem4
 hycom/hycom_ALL/hycom_2.2.72_ALL/relax/src_2.2.35/z_woa_tracer
 
 # -- from my setup
-hycom/hycom_ALL/hycom_2.2.72_ALL/Make_all.src
-hycom/hycom_ALL/hycom_2.2.72_ALL/Make_ncdf.src
 hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/Make_all.log
 hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/Make_archm2data2d
 hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/Make_archm2data3z
@@ -401,11 +401,6 @@ hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/remap_archv
 hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/remapi_archv
 hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/restart2archv
 hycom/hycom_ALL/hycom_2.2.72_ALL/archive/src_2.2.35/trim_archv
-hycom/hycom_ALL/hycom_2.2.72_ALL/bin/Make_all.com
-hycom/hycom_ALL/hycom_2.2.72_ALL/bin/Make_all.log
-hycom/hycom_ALL/hycom_2.2.72_ALL/bin/Make_clean.log
-hycom/hycom_ALL/hycom_2.2.72_ALL/bin/Make_ncdf.com
-hycom/hycom_ALL/hycom_2.2.72_ALL/bin/Make_ncdf.log
 hycom/hycom_ALL/hycom_2.2.72_ALL/bin/ascii2hycom
 hycom/hycom_ALL/hycom_2.2.72_ALL/bin/cice_restart
 hycom/hycom_ALL/hycom_2.2.72_ALL/bin/cice_stat

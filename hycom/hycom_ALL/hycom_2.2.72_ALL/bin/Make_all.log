@@ -1,0 +1,2945 @@
+setenv OS `uname`
+uname
+if ( Linux == Linux ) then
+if ( `/bin/uname -m` == x86_64 ) then
+/bin/uname -m
+setenv OS Linux64
+endif
+setenv OS LinuxICE
+endif
+if ( LinuxICE == UNICOS/mp ) then
+switch ( LinuxICE )
+setenv FC ifort
+setenv FFLAGS -g -O3 -fp-model source -convert big_endian
+setenv FLIBS -shared-intel
+setenv CC icc
+setenv CFLAGS -O
+breaksw
+foreach f ( echo2 endian )
+if ( ! -e echo2_LinuxICE ) then
+icc -O echo2.c -o echo2_LinuxICE
+else if ( -f `find ${f}.c -prune -newer ${f}_${OS}` ) then
+touch echo2
+/bin/rm -f echo2
+chmod a+rx echo2_LinuxICE
+/bin/ln -s echo2_LinuxICE echo2
+end
+if ( ! -e endian_LinuxICE ) then
+icc -O endian.c -o endian_LinuxICE
+else if ( -f `find ${f}.c -prune -newer ${f}_${OS}` ) then
+touch endian
+/bin/rm -f endian
+chmod a+rx endian_LinuxICE
+/bin/ln -s endian_LinuxICE endian
+end
+foreach f ( clim_stat wind_stat wind_stat_check wind_stat_range wind_stat_range2 wind_stat_range5 wind_stat_raw hycom_sigma )
+if ( ! -e clim_stat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian clim_stat.f -shared-intel -o clim_stat_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e wind_stat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat.f -shared-intel -o wind_stat_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e wind_stat_check_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_check.f -shared-intel -o wind_stat_check_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e wind_stat_range_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_range.f -shared-intel -o wind_stat_range_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e wind_stat_range2_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_range2.f -shared-intel -o wind_stat_range2_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e wind_stat_range5_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_range5.f -shared-intel -o wind_stat_range5_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e wind_stat_raw_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_raw.f -shared-intel -o wind_stat_raw_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+if ( ! -e hycom_sigma_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_sigma.f -shared-intel -o hycom_sigma_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+end
+foreach f ( cice_restart cice_stat hycom_palette lonlat_dist hycom_alat hycom_archm_dates hycom_archv_dates hycom_depth hycom_depth_40 hycom_nest_dates hycom_profile+sig hycom_profile+thstar hycom_profile2pcm hycom_profile2z hycom_profile2zi hycom_profile_argo hycom_profile_hybgen+ hycom_profile_hybgen hycom_profile_locsig hycom_profile_mld hycom_profile_remap hycom_sigma hycom_ts hycom_wind_date hycom_wind_ymdh hycom_ymdh_wind hycom_yoflat sigma0_to_sigma2 sigma2_to_sigma0 ts_to_sigma z2zi zi2z hycom_date_wind hycom_profile2plm hycom_profile_hybgen_34 hycom_profile_hybgen_35 hycom_subset_xy hycom_dp0k hycom_dp0k_cm hycom_dp0k_sigma )
+if ( ! -e cice_restart_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian cice_restart.f -shared-intel -o cice_restart_LinuxICE
+cice_restart.f(99): error #6353: A RETURN statement is invalid in the main program.
+      RETURN
+------^
+compilation aborted for cice_restart.f (code 1)
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch cice_restart
+/bin/rm -f cice_restart
+chmod a+rx cice_restart_LinuxICE
+chmod: cannot access `cice_restart_LinuxICE': No such file or directory
+/bin/ln -s cice_restart_LinuxICE cice_restart
+end
+if ( ! -e cice_stat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian cice_stat.f -shared-intel -o cice_stat_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch cice_stat
+/bin/rm -f cice_stat
+chmod a+rx cice_stat_LinuxICE
+/bin/ln -s cice_stat_LinuxICE cice_stat
+end
+if ( ! -e hycom_palette_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_palette.f -shared-intel -o hycom_palette_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_palette
+/bin/rm -f hycom_palette
+chmod a+rx hycom_palette_LinuxICE
+/bin/ln -s hycom_palette_LinuxICE hycom_palette
+end
+if ( ! -e lonlat_dist_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian lonlat_dist.f -shared-intel -o lonlat_dist_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch lonlat_dist
+/bin/rm -f lonlat_dist
+chmod a+rx lonlat_dist_LinuxICE
+/bin/ln -s lonlat_dist_LinuxICE lonlat_dist
+end
+if ( ! -e hycom_alat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_alat.f -shared-intel -o hycom_alat_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_alat
+/bin/rm -f hycom_alat
+chmod a+rx hycom_alat_LinuxICE
+/bin/ln -s hycom_alat_LinuxICE hycom_alat
+end
+if ( ! -e hycom_archm_dates_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_archm_dates.f -shared-intel -o hycom_archm_dates_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_archm_dates
+/bin/rm -f hycom_archm_dates
+chmod a+rx hycom_archm_dates_LinuxICE
+/bin/ln -s hycom_archm_dates_LinuxICE hycom_archm_dates
+end
+if ( ! -e hycom_archv_dates_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_archv_dates.f -shared-intel -o hycom_archv_dates_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_archv_dates
+/bin/rm -f hycom_archv_dates
+chmod a+rx hycom_archv_dates_LinuxICE
+/bin/ln -s hycom_archv_dates_LinuxICE hycom_archv_dates
+end
+if ( ! -e hycom_depth_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_depth.f -shared-intel -o hycom_depth_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_depth
+/bin/rm -f hycom_depth
+chmod a+rx hycom_depth_LinuxICE
+/bin/ln -s hycom_depth_LinuxICE hycom_depth
+end
+if ( ! -e hycom_depth_40_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_depth_40.f -shared-intel -o hycom_depth_40_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_depth_40
+/bin/rm -f hycom_depth_40
+chmod a+rx hycom_depth_40_LinuxICE
+/bin/ln -s hycom_depth_40_LinuxICE hycom_depth_40
+end
+if ( ! -e hycom_nest_dates_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_nest_dates.f -shared-intel -o hycom_nest_dates_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_nest_dates
+/bin/rm -f hycom_nest_dates
+chmod a+rx hycom_nest_dates_LinuxICE
+/bin/ln -s hycom_nest_dates_LinuxICE hycom_nest_dates
+end
+if ( ! -e hycom_profile+sig_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile+sig.f -shared-intel -o hycom_profile+sig_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile+sig
+/bin/rm -f hycom_profile+sig
+chmod a+rx hycom_profile+sig_LinuxICE
+/bin/ln -s hycom_profile+sig_LinuxICE hycom_profile+sig
+end
+if ( ! -e hycom_profile+thstar_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile+thstar.f -shared-intel -o hycom_profile+thstar_LinuxICE
+hycom_profile+thstar.f(31): remark #7713: This statement function has not been used.   [SIGLOC]
+      real    kappaf,sigloc,dsiglocdt,dsiglocds
+---------------------^
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile+thstar
+/bin/rm -f hycom_profile+thstar
+chmod a+rx hycom_profile+thstar_LinuxICE
+/bin/ln -s hycom_profile+thstar_LinuxICE hycom_profile+thstar
+end
+if ( ! -e hycom_profile2pcm_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile2pcm.f -shared-intel -o hycom_profile2pcm_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile2pcm
+/bin/rm -f hycom_profile2pcm
+chmod a+rx hycom_profile2pcm_LinuxICE
+/bin/ln -s hycom_profile2pcm_LinuxICE hycom_profile2pcm
+end
+if ( ! -e hycom_profile2z_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile2z.f -shared-intel -o hycom_profile2z_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile2z
+/bin/rm -f hycom_profile2z
+chmod a+rx hycom_profile2z_LinuxICE
+/bin/ln -s hycom_profile2z_LinuxICE hycom_profile2z
+end
+if ( ! -e hycom_profile2zi_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile2zi.f -shared-intel -o hycom_profile2zi_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile2zi
+/bin/rm -f hycom_profile2zi
+chmod a+rx hycom_profile2zi_LinuxICE
+/bin/ln -s hycom_profile2zi_LinuxICE hycom_profile2zi
+end
+if ( ! -e hycom_profile_argo_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_argo.f -shared-intel -o hycom_profile_argo_LinuxICE
+hycom_profile_argo.f(273): warning #7532: The number of arguments is incompatible with intrinsic procedure, assume 'external'.   [GAMMA]
+      gamma(p,t,s)=0.35803e-1 + p*(0.18741e-4 - 0.67795e-6*t +
+------^
+/tmp/ifortfnkOw9.o: In function `profile':
+/nobackup/forsk/sm_grasu/sea/TOPAZ5/NERSC-HYCOM-CICE/hycom/hycom_ALL/hycom_2.2.72_ALL/bin/hycom_profile_argo.f:161: undefined reference to `sig_i_'
+/nobackup/forsk/sm_grasu/sea/TOPAZ5/NERSC-HYCOM-CICE/hycom/hycom_ALL/hycom_2.2.72_ALL/bin/hycom_profile_argo.f:162: undefined reference to `sig_p_'
+/nobackup/forsk/sm_grasu/sea/TOPAZ5/NERSC-HYCOM-CICE/hycom/hycom_ALL/hycom_2.2.72_ALL/bin/hycom_profile_argo.f:197: undefined reference to `sig_p_'
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_argo
+/bin/rm -f hycom_profile_argo
+chmod a+rx hycom_profile_argo_LinuxICE
+chmod: cannot access `hycom_profile_argo_LinuxICE': No such file or directory
+/bin/ln -s hycom_profile_argo_LinuxICE hycom_profile_argo
+end
+if ( ! -e hycom_profile_hybgen+_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_hybgen+.f -shared-intel -o hycom_profile_hybgen+_LinuxICE
+hycom_profile_hybgen+.f(308): error #6418: This name has already been assigned a data type.   [LP]
+      integer i,j,kk,n, lp,nstep, i0,j0,itest,jtest
+------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+compilation aborted for hycom_profile_hybgen+.f (code 1)
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_hybgen+
+/bin/rm -f hycom_profile_hybgen+
+chmod a+rx hycom_profile_hybgen+_LinuxICE
+chmod: cannot access `hycom_profile_hybgen+_LinuxICE': No such file or directory
+/bin/ln -s hycom_profile_hybgen+_LinuxICE hycom_profile_hybgen+
+end
+if ( ! -e hycom_profile_hybgen_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_hybgen.f -shared-intel -o hycom_profile_hybgen_LinuxICE
+hycom_profile_hybgen.f(308): error #6418: This name has already been assigned a data type.   [LP]
+      integer i,j,kk,n, lp,nstep, i0,j0,itest,jtest
+------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+compilation aborted for hycom_profile_hybgen.f (code 1)
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_hybgen
+/bin/rm -f hycom_profile_hybgen
+chmod a+rx hycom_profile_hybgen_LinuxICE
+chmod: cannot access `hycom_profile_hybgen_LinuxICE': No such file or directory
+/bin/ln -s hycom_profile_hybgen_LinuxICE hycom_profile_hybgen
+end
+if ( ! -e hycom_profile_locsig_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_locsig.f -shared-intel -o hycom_profile_locsig_LinuxICE
+hycom_profile_locsig.f(27): remark #7713: This statement function has not been used.   [SIGLOC]
+      real    sigloc,dsiglocdt,dsiglocds
+--------------^
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_locsig
+/bin/rm -f hycom_profile_locsig
+chmod a+rx hycom_profile_locsig_LinuxICE
+/bin/ln -s hycom_profile_locsig_LinuxICE hycom_profile_locsig
+end
+if ( ! -e hycom_profile_mld_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_mld.f -shared-intel -o hycom_profile_mld_LinuxICE
+hycom_profile_mld.f(250): remark #7713: This statement function has not been used.   [SIGLOC]
+      real    sigloc,dsiglocdt,dsiglocds
+--------------^
+hycom_profile_mld.f(250): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real    sigloc,dsiglocdt,dsiglocds
+-------------------------------^
+hycom_profile_mld.f(488): remark #7713: This statement function has not been used.   [SIGLOC]
+      real    sigloc,dsiglocdt,dsiglocds
+--------------^
+hycom_profile_mld.f(641): remark #7713: This statement function has not been used.   [SIGLOC]
+      real    sigloc,dsiglocdt,dsiglocds
+--------------^
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_mld
+/bin/rm -f hycom_profile_mld
+chmod a+rx hycom_profile_mld_LinuxICE
+/bin/ln -s hycom_profile_mld_LinuxICE hycom_profile_mld
+end
+if ( ! -e hycom_profile_remap_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_remap.f -shared-intel -o hycom_profile_remap_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_remap
+/bin/rm -f hycom_profile_remap
+chmod a+rx hycom_profile_remap_LinuxICE
+/bin/ln -s hycom_profile_remap_LinuxICE hycom_profile_remap
+end
+if ( ! -e hycom_sigma_LinuxICE ) then
+if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+find hycom_sigma.f -prune -newer hycom_sigma_LinuxICE
+echo hycom_sigma_LinuxICE is already up to date
+hycom_sigma_LinuxICE is already up to date
+endif
+touch hycom_sigma
+/bin/rm -f hycom_sigma
+chmod a+rx hycom_sigma_LinuxICE
+/bin/ln -s hycom_sigma_LinuxICE hycom_sigma
+end
+if ( ! -e hycom_ts_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_ts.f -shared-intel -o hycom_ts_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_ts
+/bin/rm -f hycom_ts
+chmod a+rx hycom_ts_LinuxICE
+/bin/ln -s hycom_ts_LinuxICE hycom_ts
+end
+if ( ! -e hycom_wind_date_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_wind_date.f -shared-intel -o hycom_wind_date_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_wind_date
+/bin/rm -f hycom_wind_date
+chmod a+rx hycom_wind_date_LinuxICE
+/bin/ln -s hycom_wind_date_LinuxICE hycom_wind_date
+end
+if ( ! -e hycom_wind_ymdh_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_wind_ymdh.f -shared-intel -o hycom_wind_ymdh_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_wind_ymdh
+/bin/rm -f hycom_wind_ymdh
+chmod a+rx hycom_wind_ymdh_LinuxICE
+/bin/ln -s hycom_wind_ymdh_LinuxICE hycom_wind_ymdh
+end
+if ( ! -e hycom_ymdh_wind_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_ymdh_wind.f -shared-intel -o hycom_ymdh_wind_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_ymdh_wind
+/bin/rm -f hycom_ymdh_wind
+chmod a+rx hycom_ymdh_wind_LinuxICE
+/bin/ln -s hycom_ymdh_wind_LinuxICE hycom_ymdh_wind
+end
+if ( ! -e hycom_yoflat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_yoflat.f -shared-intel -o hycom_yoflat_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_yoflat
+/bin/rm -f hycom_yoflat
+chmod a+rx hycom_yoflat_LinuxICE
+/bin/ln -s hycom_yoflat_LinuxICE hycom_yoflat
+end
+if ( ! -e sigma0_to_sigma2_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian sigma0_to_sigma2.f -shared-intel -o sigma0_to_sigma2_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch sigma0_to_sigma2
+/bin/rm -f sigma0_to_sigma2
+chmod a+rx sigma0_to_sigma2_LinuxICE
+/bin/ln -s sigma0_to_sigma2_LinuxICE sigma0_to_sigma2
+end
+if ( ! -e sigma2_to_sigma0_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian sigma2_to_sigma0.f -shared-intel -o sigma2_to_sigma0_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch sigma2_to_sigma0
+/bin/rm -f sigma2_to_sigma0
+chmod a+rx sigma2_to_sigma0_LinuxICE
+/bin/ln -s sigma2_to_sigma0_LinuxICE sigma2_to_sigma0
+end
+if ( ! -e ts_to_sigma_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian ts_to_sigma.f -shared-intel -o ts_to_sigma_LinuxICE
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+../include/stmt_fns_SIGMA0_7term.h(8): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+../include/stmt_fns_SIGMA0_9term.h(8): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------------------------------^
+../include/stmt_fns_SIGMA0_17term.h(9): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+../include/stmt_fns_SIGMA0_12term.h(9): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+../include/stmt_fns_SIGMA2_7term.h(8): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+../include/stmt_fns_SIGMA2_9term.h(8): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------------------------------^
+../include/stmt_fns_SIGMA2_17term.h(9): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+../include/stmt_fns_SIGMA2_12term.h(9): remark #7713: This statement function has not been used.   [R8]
+      real*8  r8
+--------------^
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch ts_to_sigma
+/bin/rm -f ts_to_sigma
+chmod a+rx ts_to_sigma_LinuxICE
+/bin/ln -s ts_to_sigma_LinuxICE ts_to_sigma
+end
+if ( ! -e z2zi_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian z2zi.f -shared-intel -o z2zi_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch z2zi
+/bin/rm -f z2zi
+chmod a+rx z2zi_LinuxICE
+/bin/ln -s z2zi_LinuxICE z2zi
+end
+if ( ! -e zi2z_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian zi2z.f -shared-intel -o zi2z_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch zi2z
+/bin/rm -f zi2z
+chmod a+rx zi2z_LinuxICE
+/bin/ln -s zi2z_LinuxICE zi2z
+end
+if ( ! -e hycom_date_wind_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_date_wind.f -shared-intel -o hycom_date_wind_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_date_wind
+/bin/rm -f hycom_date_wind
+chmod a+rx hycom_date_wind_LinuxICE
+/bin/ln -s hycom_date_wind_LinuxICE hycom_date_wind
+end
+if ( ! -e hycom_profile2plm_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile2plm.f -shared-intel -o hycom_profile2plm_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile2plm
+/bin/rm -f hycom_profile2plm
+chmod a+rx hycom_profile2plm_LinuxICE
+/bin/ln -s hycom_profile2plm_LinuxICE hycom_profile2plm
+end
+if ( ! -e hycom_profile_hybgen_34_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_hybgen_34.f -shared-intel -o hycom_profile_hybgen_34_LinuxICE
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_hybgen_34
+/bin/rm -f hycom_profile_hybgen_34
+chmod a+rx hycom_profile_hybgen_34_LinuxICE
+/bin/ln -s hycom_profile_hybgen_34_LinuxICE hycom_profile_hybgen_34
+end
+if ( ! -e hycom_profile_hybgen_35_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_hybgen_35.f -shared-intel -o hycom_profile_hybgen_35_LinuxICE
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_hybgen_35
+/bin/rm -f hycom_profile_hybgen_35
+chmod a+rx hycom_profile_hybgen_35_LinuxICE
+/bin/ln -s hycom_profile_hybgen_35_LinuxICE hycom_profile_hybgen_35
+end
+if ( ! -e hycom_subset_xy_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_subset_xy.f -shared-intel -o hycom_subset_xy_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_subset_xy
+/bin/rm -f hycom_subset_xy
+chmod a+rx hycom_subset_xy_LinuxICE
+/bin/ln -s hycom_subset_xy_LinuxICE hycom_subset_xy
+end
+if ( ! -e hycom_dp0k_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_dp0k.f -shared-intel -o hycom_dp0k_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_dp0k
+/bin/rm -f hycom_dp0k
+chmod a+rx hycom_dp0k_LinuxICE
+/bin/ln -s hycom_dp0k_LinuxICE hycom_dp0k
+end
+if ( ! -e hycom_dp0k_cm_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_dp0k_cm.f -shared-intel -o hycom_dp0k_cm_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_dp0k_cm
+/bin/rm -f hycom_dp0k_cm
+chmod a+rx hycom_dp0k_cm_LinuxICE
+/bin/ln -s hycom_dp0k_cm_LinuxICE hycom_dp0k_cm
+end
+if ( ! -e hycom_dp0k_sigma_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_dp0k_sigma.f -shared-intel -o hycom_dp0k_sigma_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch hycom_dp0k_sigma
+/bin/rm -f hycom_dp0k_sigma
+chmod a+rx hycom_dp0k_sigma_LinuxICE
+/bin/ln -s hycom_dp0k_sigma_LinuxICE hycom_dp0k_sigma
+end
+ifort -g -O3 -fp-model source -convert big_endian -c hycom_endian_io.F
+icc -O -c parse.c
+foreach f ( hycom_crosscorr hycom_crosscorr_lag hycom_join unf42hycom unf82hycom hycom2raw hycom2raw8 hycom_1st_isopyc hycom_arctic hycom_arctic_ok hycom_bandmask hycom_binning hycom_binning_fld hycom_bouflx hycom_clip hycom_count hycom_eddy_center hycom_expr hycom_extract hycom_fill hycom_halfsm hycom_histogram hycom_ij2lonlat hycom_islands hycom_larger hycom_lonlat2ij hycom_lonlat2xy hycom_mask hycom_mass hycom_mean hycom_meanfit hycom_median hycom_meridional hycom_meridional_lon hycom_mixlay hycom_mixlay_old hycom_mxthrd hycom_NaN hycom_print hycom_range hycom_range_ij hycom_rivers hycom_rotate hycom_runmean hycom_sample hycom_sample_list hycom_sea_ok hycom_shift hycom_skill hycom_slopefit hycom_smooth hycom_stericssh hycom_subset hycom_superset hycom_thirdsm hycom_tidelat hycom_triple hycom_void hycom_xy2lonlat hycom_zonal hycom_zonal_lat ascii2hycom raw2hycom raw82hycom hycom_2d_ok hycom_autocorr hycom_autocorr_lag hycom_boxmean hycom_boxtime hycom_index_sort hycom_mask_ok hycom_mass_corr hycom_newzi hycom_quadlsq hycom_regression hycom_sstice hycom_botfric hycom_boxsmooth hycom_diflat hycom_merge hycom_sample_xy hycom_scatter hycom_tidebody hycom_vmean hycom_xward )
+if ( ! -e hycom_crosscorr_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_crosscorr.F -shared-intel hycom_endian_io.o parse.o -o hycom_crosscorr_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_crosscorr
+/bin/rm -f hycom_crosscorr
+chmod a+rx hycom_crosscorr_LinuxICE
+/bin/ln -s hycom_crosscorr_LinuxICE hycom_crosscorr
+end
+if ( ! -e hycom_crosscorr_lag_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_crosscorr_lag.F -shared-intel hycom_endian_io.o parse.o -o hycom_crosscorr_lag_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_crosscorr_lag
+/bin/rm -f hycom_crosscorr_lag
+chmod a+rx hycom_crosscorr_lag_LinuxICE
+/bin/ln -s hycom_crosscorr_lag_LinuxICE hycom_crosscorr_lag
+end
+if ( ! -e hycom_join_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_join.F -shared-intel hycom_endian_io.o parse.o -o hycom_join_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_join
+/bin/rm -f hycom_join
+chmod a+rx hycom_join_LinuxICE
+/bin/ln -s hycom_join_LinuxICE hycom_join
+end
+if ( ! -e unf42hycom_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian unf42hycom.F -shared-intel hycom_endian_io.o parse.o -o unf42hycom_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch unf42hycom
+/bin/rm -f unf42hycom
+chmod a+rx unf42hycom_LinuxICE
+/bin/ln -s unf42hycom_LinuxICE unf42hycom
+end
+if ( ! -e unf82hycom_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian unf82hycom.F -shared-intel hycom_endian_io.o parse.o -o unf82hycom_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch unf82hycom
+/bin/rm -f unf82hycom
+chmod a+rx unf82hycom_LinuxICE
+/bin/ln -s unf82hycom_LinuxICE unf82hycom
+end
+if ( ! -e hycom2raw_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom2raw.F -shared-intel hycom_endian_io.o parse.o -o hycom2raw_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom2raw
+/bin/rm -f hycom2raw
+chmod a+rx hycom2raw_LinuxICE
+/bin/ln -s hycom2raw_LinuxICE hycom2raw
+end
+if ( ! -e hycom2raw8_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom2raw8.F -shared-intel hycom_endian_io.o parse.o -o hycom2raw8_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom2raw8
+/bin/rm -f hycom2raw8
+chmod a+rx hycom2raw8_LinuxICE
+/bin/ln -s hycom2raw8_LinuxICE hycom2raw8
+end
+if ( ! -e hycom_1st_isopyc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_1st_isopyc.F -shared-intel hycom_endian_io.o parse.o -o hycom_1st_isopyc_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_1st_isopyc
+/bin/rm -f hycom_1st_isopyc
+chmod a+rx hycom_1st_isopyc_LinuxICE
+/bin/ln -s hycom_1st_isopyc_LinuxICE hycom_1st_isopyc
+end
+if ( ! -e hycom_arctic_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_arctic.F -shared-intel hycom_endian_io.o parse.o -o hycom_arctic_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_arctic
+/bin/rm -f hycom_arctic
+chmod a+rx hycom_arctic_LinuxICE
+/bin/ln -s hycom_arctic_LinuxICE hycom_arctic
+end
+if ( ! -e hycom_arctic_ok_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_arctic_ok.F -shared-intel hycom_endian_io.o parse.o -o hycom_arctic_ok_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_arctic_ok
+/bin/rm -f hycom_arctic_ok
+chmod a+rx hycom_arctic_ok_LinuxICE
+/bin/ln -s hycom_arctic_ok_LinuxICE hycom_arctic_ok
+end
+if ( ! -e hycom_bandmask_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_bandmask.F -shared-intel hycom_endian_io.o parse.o -o hycom_bandmask_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_bandmask
+/bin/rm -f hycom_bandmask
+chmod a+rx hycom_bandmask_LinuxICE
+/bin/ln -s hycom_bandmask_LinuxICE hycom_bandmask
+end
+if ( ! -e hycom_binning_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_binning.F -shared-intel hycom_endian_io.o parse.o -o hycom_binning_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_binning
+/bin/rm -f hycom_binning
+chmod a+rx hycom_binning_LinuxICE
+/bin/ln -s hycom_binning_LinuxICE hycom_binning
+end
+if ( ! -e hycom_binning_fld_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_binning_fld.F -shared-intel hycom_endian_io.o parse.o -o hycom_binning_fld_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_binning_fld
+/bin/rm -f hycom_binning_fld
+chmod a+rx hycom_binning_fld_LinuxICE
+/bin/ln -s hycom_binning_fld_LinuxICE hycom_binning_fld
+end
+if ( ! -e hycom_bouflx_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_bouflx.F -shared-intel hycom_endian_io.o parse.o -o hycom_bouflx_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_bouflx
+/bin/rm -f hycom_bouflx
+chmod a+rx hycom_bouflx_LinuxICE
+/bin/ln -s hycom_bouflx_LinuxICE hycom_bouflx
+end
+if ( ! -e hycom_clip_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_clip.F -shared-intel hycom_endian_io.o parse.o -o hycom_clip_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_clip
+/bin/rm -f hycom_clip
+chmod a+rx hycom_clip_LinuxICE
+/bin/ln -s hycom_clip_LinuxICE hycom_clip
+end
+if ( ! -e hycom_count_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_count.F -shared-intel hycom_endian_io.o parse.o -o hycom_count_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_count
+/bin/rm -f hycom_count
+chmod a+rx hycom_count_LinuxICE
+/bin/ln -s hycom_count_LinuxICE hycom_count
+end
+if ( ! -e hycom_eddy_center_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_eddy_center.F -shared-intel hycom_endian_io.o parse.o -o hycom_eddy_center_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_eddy_center
+/bin/rm -f hycom_eddy_center
+chmod a+rx hycom_eddy_center_LinuxICE
+/bin/ln -s hycom_eddy_center_LinuxICE hycom_eddy_center
+end
+if ( ! -e hycom_expr_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_expr.F -shared-intel hycom_endian_io.o parse.o -o hycom_expr_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_expr
+/bin/rm -f hycom_expr
+chmod a+rx hycom_expr_LinuxICE
+/bin/ln -s hycom_expr_LinuxICE hycom_expr
+end
+if ( ! -e hycom_extract_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_extract.F -shared-intel hycom_endian_io.o parse.o -o hycom_extract_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_extract
+/bin/rm -f hycom_extract
+chmod a+rx hycom_extract_LinuxICE
+/bin/ln -s hycom_extract_LinuxICE hycom_extract
+end
+if ( ! -e hycom_fill_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_fill.F -shared-intel hycom_endian_io.o parse.o -o hycom_fill_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_fill
+/bin/rm -f hycom_fill
+chmod a+rx hycom_fill_LinuxICE
+/bin/ln -s hycom_fill_LinuxICE hycom_fill
+end
+if ( ! -e hycom_halfsm_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_halfsm.F -shared-intel hycom_endian_io.o parse.o -o hycom_halfsm_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_halfsm
+/bin/rm -f hycom_halfsm
+chmod a+rx hycom_halfsm_LinuxICE
+/bin/ln -s hycom_halfsm_LinuxICE hycom_halfsm
+end
+if ( ! -e hycom_histogram_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_histogram.F -shared-intel hycom_endian_io.o parse.o -o hycom_histogram_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_histogram
+/bin/rm -f hycom_histogram
+chmod a+rx hycom_histogram_LinuxICE
+/bin/ln -s hycom_histogram_LinuxICE hycom_histogram
+end
+if ( ! -e hycom_ij2lonlat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_ij2lonlat.F -shared-intel hycom_endian_io.o parse.o -o hycom_ij2lonlat_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_ij2lonlat
+/bin/rm -f hycom_ij2lonlat
+chmod a+rx hycom_ij2lonlat_LinuxICE
+/bin/ln -s hycom_ij2lonlat_LinuxICE hycom_ij2lonlat
+end
+if ( ! -e hycom_islands_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_islands.F -shared-intel hycom_endian_io.o parse.o -o hycom_islands_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_islands
+/bin/rm -f hycom_islands
+chmod a+rx hycom_islands_LinuxICE
+/bin/ln -s hycom_islands_LinuxICE hycom_islands
+end
+if ( ! -e hycom_larger_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_larger.F -shared-intel hycom_endian_io.o parse.o -o hycom_larger_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_larger
+/bin/rm -f hycom_larger
+chmod a+rx hycom_larger_LinuxICE
+/bin/ln -s hycom_larger_LinuxICE hycom_larger
+end
+if ( ! -e hycom_lonlat2ij_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_lonlat2ij.F -shared-intel hycom_endian_io.o parse.o -o hycom_lonlat2ij_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_lonlat2ij
+/bin/rm -f hycom_lonlat2ij
+chmod a+rx hycom_lonlat2ij_LinuxICE
+/bin/ln -s hycom_lonlat2ij_LinuxICE hycom_lonlat2ij
+end
+if ( ! -e hycom_lonlat2xy_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_lonlat2xy.F -shared-intel hycom_endian_io.o parse.o -o hycom_lonlat2xy_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_lonlat2xy
+/bin/rm -f hycom_lonlat2xy
+chmod a+rx hycom_lonlat2xy_LinuxICE
+/bin/ln -s hycom_lonlat2xy_LinuxICE hycom_lonlat2xy
+end
+if ( ! -e hycom_mask_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mask.F -shared-intel hycom_endian_io.o parse.o -o hycom_mask_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mask
+/bin/rm -f hycom_mask
+chmod a+rx hycom_mask_LinuxICE
+/bin/ln -s hycom_mask_LinuxICE hycom_mask
+end
+if ( ! -e hycom_mass_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mass.F -shared-intel hycom_endian_io.o parse.o -o hycom_mass_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mass
+/bin/rm -f hycom_mass
+chmod a+rx hycom_mass_LinuxICE
+/bin/ln -s hycom_mass_LinuxICE hycom_mass
+end
+if ( ! -e hycom_mean_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mean.F -shared-intel hycom_endian_io.o parse.o -o hycom_mean_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mean
+/bin/rm -f hycom_mean
+chmod a+rx hycom_mean_LinuxICE
+/bin/ln -s hycom_mean_LinuxICE hycom_mean
+end
+if ( ! -e hycom_meanfit_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_meanfit.F -shared-intel hycom_endian_io.o parse.o -o hycom_meanfit_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_meanfit
+/bin/rm -f hycom_meanfit
+chmod a+rx hycom_meanfit_LinuxICE
+/bin/ln -s hycom_meanfit_LinuxICE hycom_meanfit
+end
+if ( ! -e hycom_median_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_median.F -shared-intel hycom_endian_io.o parse.o -o hycom_median_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_median
+/bin/rm -f hycom_median
+chmod a+rx hycom_median_LinuxICE
+/bin/ln -s hycom_median_LinuxICE hycom_median
+end
+if ( ! -e hycom_meridional_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_meridional.F -shared-intel hycom_endian_io.o parse.o -o hycom_meridional_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_meridional
+/bin/rm -f hycom_meridional
+chmod a+rx hycom_meridional_LinuxICE
+/bin/ln -s hycom_meridional_LinuxICE hycom_meridional
+end
+if ( ! -e hycom_meridional_lon_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_meridional_lon.F -shared-intel hycom_endian_io.o parse.o -o hycom_meridional_lon_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_meridional_lon
+/bin/rm -f hycom_meridional_lon
+chmod a+rx hycom_meridional_lon_LinuxICE
+/bin/ln -s hycom_meridional_lon_LinuxICE hycom_meridional_lon
+end
+if ( ! -e hycom_mixlay_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mixlay.F -shared-intel hycom_endian_io.o parse.o -o hycom_mixlay_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mixlay
+/bin/rm -f hycom_mixlay
+chmod a+rx hycom_mixlay_LinuxICE
+/bin/ln -s hycom_mixlay_LinuxICE hycom_mixlay
+end
+if ( ! -e hycom_mixlay_old_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mixlay_old.F -shared-intel hycom_endian_io.o parse.o -o hycom_mixlay_old_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mixlay_old
+/bin/rm -f hycom_mixlay_old
+chmod a+rx hycom_mixlay_old_LinuxICE
+/bin/ln -s hycom_mixlay_old_LinuxICE hycom_mixlay_old
+end
+if ( ! -e hycom_mxthrd_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mxthrd.F -shared-intel hycom_endian_io.o parse.o -o hycom_mxthrd_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mxthrd
+/bin/rm -f hycom_mxthrd
+chmod a+rx hycom_mxthrd_LinuxICE
+/bin/ln -s hycom_mxthrd_LinuxICE hycom_mxthrd
+end
+if ( ! -e hycom_NaN_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_NaN.F -shared-intel hycom_endian_io.o parse.o -o hycom_NaN_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_NaN
+/bin/rm -f hycom_NaN
+chmod a+rx hycom_NaN_LinuxICE
+/bin/ln -s hycom_NaN_LinuxICE hycom_NaN
+end
+if ( ! -e hycom_print_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_print.F -shared-intel hycom_endian_io.o parse.o -o hycom_print_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_print
+/bin/rm -f hycom_print
+chmod a+rx hycom_print_LinuxICE
+/bin/ln -s hycom_print_LinuxICE hycom_print
+end
+if ( ! -e hycom_range_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_range.F -shared-intel hycom_endian_io.o parse.o -o hycom_range_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_range
+/bin/rm -f hycom_range
+chmod a+rx hycom_range_LinuxICE
+/bin/ln -s hycom_range_LinuxICE hycom_range
+end
+if ( ! -e hycom_range_ij_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_range_ij.F -shared-intel hycom_endian_io.o parse.o -o hycom_range_ij_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_range_ij
+/bin/rm -f hycom_range_ij
+chmod a+rx hycom_range_ij_LinuxICE
+/bin/ln -s hycom_range_ij_LinuxICE hycom_range_ij
+end
+if ( ! -e hycom_rivers_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_rivers.F -shared-intel hycom_endian_io.o parse.o -o hycom_rivers_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_rivers
+/bin/rm -f hycom_rivers
+chmod a+rx hycom_rivers_LinuxICE
+/bin/ln -s hycom_rivers_LinuxICE hycom_rivers
+end
+if ( ! -e hycom_rotate_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_rotate.F -shared-intel hycom_endian_io.o parse.o -o hycom_rotate_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_rotate
+/bin/rm -f hycom_rotate
+chmod a+rx hycom_rotate_LinuxICE
+/bin/ln -s hycom_rotate_LinuxICE hycom_rotate
+end
+if ( ! -e hycom_runmean_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_runmean.F -shared-intel hycom_endian_io.o parse.o -o hycom_runmean_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_runmean
+/bin/rm -f hycom_runmean
+chmod a+rx hycom_runmean_LinuxICE
+/bin/ln -s hycom_runmean_LinuxICE hycom_runmean
+end
+if ( ! -e hycom_sample_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_sample.F -shared-intel hycom_endian_io.o parse.o -o hycom_sample_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_sample
+/bin/rm -f hycom_sample
+chmod a+rx hycom_sample_LinuxICE
+/bin/ln -s hycom_sample_LinuxICE hycom_sample
+end
+if ( ! -e hycom_sample_list_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_sample_list.F -shared-intel hycom_endian_io.o parse.o -o hycom_sample_list_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_sample_list
+/bin/rm -f hycom_sample_list
+chmod a+rx hycom_sample_list_LinuxICE
+/bin/ln -s hycom_sample_list_LinuxICE hycom_sample_list
+end
+if ( ! -e hycom_sea_ok_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_sea_ok.F -shared-intel hycom_endian_io.o parse.o -o hycom_sea_ok_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_sea_ok
+/bin/rm -f hycom_sea_ok
+chmod a+rx hycom_sea_ok_LinuxICE
+/bin/ln -s hycom_sea_ok_LinuxICE hycom_sea_ok
+end
+if ( ! -e hycom_shift_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_shift.F -shared-intel hycom_endian_io.o parse.o -o hycom_shift_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_shift
+/bin/rm -f hycom_shift
+chmod a+rx hycom_shift_LinuxICE
+/bin/ln -s hycom_shift_LinuxICE hycom_shift
+end
+if ( ! -e hycom_skill_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_skill.F -shared-intel hycom_endian_io.o parse.o -o hycom_skill_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_skill
+/bin/rm -f hycom_skill
+chmod a+rx hycom_skill_LinuxICE
+/bin/ln -s hycom_skill_LinuxICE hycom_skill
+end
+if ( ! -e hycom_slopefit_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_slopefit.F -shared-intel hycom_endian_io.o parse.o -o hycom_slopefit_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_slopefit
+/bin/rm -f hycom_slopefit
+chmod a+rx hycom_slopefit_LinuxICE
+/bin/ln -s hycom_slopefit_LinuxICE hycom_slopefit
+end
+if ( ! -e hycom_smooth_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_smooth.F -shared-intel hycom_endian_io.o parse.o -o hycom_smooth_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_smooth
+/bin/rm -f hycom_smooth
+chmod a+rx hycom_smooth_LinuxICE
+/bin/ln -s hycom_smooth_LinuxICE hycom_smooth
+end
+if ( ! -e hycom_stericssh_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_stericssh.F -shared-intel hycom_endian_io.o parse.o -o hycom_stericssh_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_stericssh
+/bin/rm -f hycom_stericssh
+chmod a+rx hycom_stericssh_LinuxICE
+/bin/ln -s hycom_stericssh_LinuxICE hycom_stericssh
+end
+if ( ! -e hycom_subset_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_subset.F -shared-intel hycom_endian_io.o parse.o -o hycom_subset_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_subset
+/bin/rm -f hycom_subset
+chmod a+rx hycom_subset_LinuxICE
+/bin/ln -s hycom_subset_LinuxICE hycom_subset
+end
+if ( ! -e hycom_superset_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_superset.F -shared-intel hycom_endian_io.o parse.o -o hycom_superset_LinuxICE
+hycom_superset.F(74): error #7901: A character expression is expected as a format specifier.
+        write(6,(a)) CARG(L-8:L)
+-----------------^
+hycom_superset.F(75): error #7901: A character expression is expected as a format specifier.
+        write(6,(a)) CARG(L-12:L)
+-----------------^
+compilation aborted for hycom_superset.F (code 1)
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_superset
+/bin/rm -f hycom_superset
+chmod a+rx hycom_superset_LinuxICE
+chmod: cannot access `hycom_superset_LinuxICE': No such file or directory
+/bin/ln -s hycom_superset_LinuxICE hycom_superset
+end
+if ( ! -e hycom_thirdsm_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_thirdsm.F -shared-intel hycom_endian_io.o parse.o -o hycom_thirdsm_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_thirdsm
+/bin/rm -f hycom_thirdsm
+chmod a+rx hycom_thirdsm_LinuxICE
+/bin/ln -s hycom_thirdsm_LinuxICE hycom_thirdsm
+end
+if ( ! -e hycom_tidelat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_tidelat.F -shared-intel hycom_endian_io.o parse.o -o hycom_tidelat_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_tidelat
+/bin/rm -f hycom_tidelat
+chmod a+rx hycom_tidelat_LinuxICE
+/bin/ln -s hycom_tidelat_LinuxICE hycom_tidelat
+end
+if ( ! -e hycom_triple_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_triple.F -shared-intel hycom_endian_io.o parse.o -o hycom_triple_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_triple
+/bin/rm -f hycom_triple
+chmod a+rx hycom_triple_LinuxICE
+/bin/ln -s hycom_triple_LinuxICE hycom_triple
+end
+if ( ! -e hycom_void_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_void.F -shared-intel hycom_endian_io.o parse.o -o hycom_void_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_void
+/bin/rm -f hycom_void
+chmod a+rx hycom_void_LinuxICE
+/bin/ln -s hycom_void_LinuxICE hycom_void
+end
+if ( ! -e hycom_xy2lonlat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_xy2lonlat.F -shared-intel hycom_endian_io.o parse.o -o hycom_xy2lonlat_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_xy2lonlat
+/bin/rm -f hycom_xy2lonlat
+chmod a+rx hycom_xy2lonlat_LinuxICE
+/bin/ln -s hycom_xy2lonlat_LinuxICE hycom_xy2lonlat
+end
+if ( ! -e hycom_zonal_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_zonal.F -shared-intel hycom_endian_io.o parse.o -o hycom_zonal_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_zonal
+/bin/rm -f hycom_zonal
+chmod a+rx hycom_zonal_LinuxICE
+/bin/ln -s hycom_zonal_LinuxICE hycom_zonal
+end
+if ( ! -e hycom_zonal_lat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_zonal_lat.F -shared-intel hycom_endian_io.o parse.o -o hycom_zonal_lat_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_zonal_lat
+/bin/rm -f hycom_zonal_lat
+chmod a+rx hycom_zonal_lat_LinuxICE
+/bin/ln -s hycom_zonal_lat_LinuxICE hycom_zonal_lat
+end
+if ( ! -e ascii2hycom_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian ascii2hycom.F -shared-intel hycom_endian_io.o parse.o -o ascii2hycom_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch ascii2hycom
+/bin/rm -f ascii2hycom
+chmod a+rx ascii2hycom_LinuxICE
+/bin/ln -s ascii2hycom_LinuxICE ascii2hycom
+end
+if ( ! -e raw2hycom_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian raw2hycom.F -shared-intel hycom_endian_io.o parse.o -o raw2hycom_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch raw2hycom
+/bin/rm -f raw2hycom
+chmod a+rx raw2hycom_LinuxICE
+/bin/ln -s raw2hycom_LinuxICE raw2hycom
+end
+if ( ! -e raw82hycom_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian raw82hycom.F -shared-intel hycom_endian_io.o parse.o -o raw82hycom_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch raw82hycom
+/bin/rm -f raw82hycom
+chmod a+rx raw82hycom_LinuxICE
+/bin/ln -s raw82hycom_LinuxICE raw82hycom
+end
+if ( ! -e hycom_2d_ok_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_2d_ok.F -shared-intel hycom_endian_io.o parse.o -o hycom_2d_ok_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_2d_ok
+/bin/rm -f hycom_2d_ok
+chmod a+rx hycom_2d_ok_LinuxICE
+/bin/ln -s hycom_2d_ok_LinuxICE hycom_2d_ok
+end
+if ( ! -e hycom_autocorr_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_autocorr.F -shared-intel hycom_endian_io.o parse.o -o hycom_autocorr_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_autocorr
+/bin/rm -f hycom_autocorr
+chmod a+rx hycom_autocorr_LinuxICE
+/bin/ln -s hycom_autocorr_LinuxICE hycom_autocorr
+end
+if ( ! -e hycom_autocorr_lag_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_autocorr_lag.F -shared-intel hycom_endian_io.o parse.o -o hycom_autocorr_lag_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_autocorr_lag
+/bin/rm -f hycom_autocorr_lag
+chmod a+rx hycom_autocorr_lag_LinuxICE
+/bin/ln -s hycom_autocorr_lag_LinuxICE hycom_autocorr_lag
+end
+if ( ! -e hycom_boxmean_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_boxmean.F -shared-intel hycom_endian_io.o parse.o -o hycom_boxmean_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_boxmean
+/bin/rm -f hycom_boxmean
+chmod a+rx hycom_boxmean_LinuxICE
+/bin/ln -s hycom_boxmean_LinuxICE hycom_boxmean
+end
+if ( ! -e hycom_boxtime_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_boxtime.F -shared-intel hycom_endian_io.o parse.o -o hycom_boxtime_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_boxtime
+/bin/rm -f hycom_boxtime
+chmod a+rx hycom_boxtime_LinuxICE
+/bin/ln -s hycom_boxtime_LinuxICE hycom_boxtime
+end
+if ( ! -e hycom_index_sort_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_index_sort.F -shared-intel hycom_endian_io.o parse.o -o hycom_index_sort_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_index_sort
+/bin/rm -f hycom_index_sort
+chmod a+rx hycom_index_sort_LinuxICE
+/bin/ln -s hycom_index_sort_LinuxICE hycom_index_sort
+end
+if ( ! -e hycom_mask_ok_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mask_ok.F -shared-intel hycom_endian_io.o parse.o -o hycom_mask_ok_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mask_ok
+/bin/rm -f hycom_mask_ok
+chmod a+rx hycom_mask_ok_LinuxICE
+/bin/ln -s hycom_mask_ok_LinuxICE hycom_mask_ok
+end
+if ( ! -e hycom_mass_corr_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_mass_corr.F -shared-intel hycom_endian_io.o parse.o -o hycom_mass_corr_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_mass_corr
+/bin/rm -f hycom_mass_corr
+chmod a+rx hycom_mass_corr_LinuxICE
+/bin/ln -s hycom_mass_corr_LinuxICE hycom_mass_corr
+end
+if ( ! -e hycom_newzi_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_newzi.F -shared-intel hycom_endian_io.o parse.o -o hycom_newzi_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_newzi
+/bin/rm -f hycom_newzi
+chmod a+rx hycom_newzi_LinuxICE
+/bin/ln -s hycom_newzi_LinuxICE hycom_newzi
+end
+if ( ! -e hycom_quadlsq_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_quadlsq.F -shared-intel hycom_endian_io.o parse.o -o hycom_quadlsq_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_quadlsq
+/bin/rm -f hycom_quadlsq
+chmod a+rx hycom_quadlsq_LinuxICE
+/bin/ln -s hycom_quadlsq_LinuxICE hycom_quadlsq
+end
+if ( ! -e hycom_regression_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_regression.F -shared-intel hycom_endian_io.o parse.o -o hycom_regression_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_regression
+/bin/rm -f hycom_regression
+chmod a+rx hycom_regression_LinuxICE
+/bin/ln -s hycom_regression_LinuxICE hycom_regression
+end
+if ( ! -e hycom_sstice_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_sstice.F -shared-intel hycom_endian_io.o parse.o -o hycom_sstice_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_sstice
+/bin/rm -f hycom_sstice
+chmod a+rx hycom_sstice_LinuxICE
+/bin/ln -s hycom_sstice_LinuxICE hycom_sstice
+end
+if ( ! -e hycom_botfric_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_botfric.F -shared-intel hycom_endian_io.o parse.o -o hycom_botfric_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_botfric
+/bin/rm -f hycom_botfric
+chmod a+rx hycom_botfric_LinuxICE
+/bin/ln -s hycom_botfric_LinuxICE hycom_botfric
+end
+if ( ! -e hycom_boxsmooth_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_boxsmooth.F -shared-intel hycom_endian_io.o parse.o -o hycom_boxsmooth_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_boxsmooth
+/bin/rm -f hycom_boxsmooth
+chmod a+rx hycom_boxsmooth_LinuxICE
+/bin/ln -s hycom_boxsmooth_LinuxICE hycom_boxsmooth
+end
+if ( ! -e hycom_diflat_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_diflat.F -shared-intel hycom_endian_io.o parse.o -o hycom_diflat_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_diflat
+/bin/rm -f hycom_diflat
+chmod a+rx hycom_diflat_LinuxICE
+/bin/ln -s hycom_diflat_LinuxICE hycom_diflat
+end
+if ( ! -e hycom_merge_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_merge.F -shared-intel hycom_endian_io.o parse.o -o hycom_merge_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_merge
+/bin/rm -f hycom_merge
+chmod a+rx hycom_merge_LinuxICE
+/bin/ln -s hycom_merge_LinuxICE hycom_merge
+end
+if ( ! -e hycom_sample_xy_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_sample_xy.F -shared-intel hycom_endian_io.o parse.o -o hycom_sample_xy_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_sample_xy
+/bin/rm -f hycom_sample_xy
+chmod a+rx hycom_sample_xy_LinuxICE
+/bin/ln -s hycom_sample_xy_LinuxICE hycom_sample_xy
+end
+if ( ! -e hycom_scatter_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_scatter.F -shared-intel hycom_endian_io.o parse.o -o hycom_scatter_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_scatter
+/bin/rm -f hycom_scatter
+chmod a+rx hycom_scatter_LinuxICE
+/bin/ln -s hycom_scatter_LinuxICE hycom_scatter
+end
+if ( ! -e hycom_tidebody_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_tidebody.F -shared-intel hycom_endian_io.o parse.o -o hycom_tidebody_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_tidebody
+/bin/rm -f hycom_tidebody
+chmod a+rx hycom_tidebody_LinuxICE
+/bin/ln -s hycom_tidebody_LinuxICE hycom_tidebody
+end
+if ( ! -e hycom_vmean_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_vmean.F -shared-intel hycom_endian_io.o parse.o -o hycom_vmean_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_vmean
+/bin/rm -f hycom_vmean
+chmod a+rx hycom_vmean_LinuxICE
+/bin/ln -s hycom_vmean_LinuxICE hycom_vmean
+end
+if ( ! -e hycom_xward_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_xward.F -shared-intel hycom_endian_io.o parse.o -o hycom_xward_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_xward
+/bin/rm -f hycom_xward
+chmod a+rx hycom_xward_LinuxICE
+/bin/ln -s hycom_xward_LinuxICE hycom_xward
+end
+ifort -g -O3 -fp-model source -convert big_endian -c hycom_profile_lib.F
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+./../include/stmt_fns_SIGMA0_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+./../include/stmt_fns_SIGMA0_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+./../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA0_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------------------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+./../include/stmt_fns_SIGMA0_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+./../include/stmt_fns_SIGMA2_7term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+./../include/stmt_fns_SIGMA2_9term.h(6): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+./../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA2_17term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,sigloc,dsiglocdt,dsiglocds
+-------------------------------------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-------------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [TOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+--------------------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [SOFSIG]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [SIGLOC]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+----------------------------------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+-----------------------------------------------------^
+./../include/stmt_fns_SIGMA2_12term.h(7): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+      real*8  sig,dsigdt,dsigds,tofsig,sofsig,sigloc,dsiglocdt,dsiglocds
+---------------------------------------------------------------^
+foreach f ( hycom_profile_list )
+if ( ! -e hycom_profile_list_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_list.F -shared-intel hycom_profile_lib.o hycom_endian_io.o parse.o -o hycom_profile_list_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_list
+/bin/rm -f hycom_profile_list
+chmod a+rx hycom_profile_list_LinuxICE
+/bin/ln -s hycom_profile_list_LinuxICE hycom_profile_list
+end
+foreach f ( hycom_profile_argo hycom_profile_hybgen hycom_profile_hybgen+ )
+if ( ! -e hycom_profile_argo_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_argo.f -shared-intel hycom_profile_lib.o hycom_endian_io.o parse.o -o hycom_profile_argo_LinuxICE
+hycom_profile_argo.f(273): warning #7532: The number of arguments is incompatible with intrinsic procedure, assume 'external'.   [GAMMA]
+      gamma(p,t,s)=0.35803e-1 + p*(0.18741e-4 - 0.67795e-6*t +
+------^
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_argo
+/bin/rm -f hycom_profile_argo
+chmod a+rx hycom_profile_argo_LinuxICE
+/bin/ln -s hycom_profile_argo_LinuxICE hycom_profile_argo
+end
+if ( ! -e hycom_profile_hybgen_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_hybgen.f -shared-intel hycom_profile_lib.o hycom_endian_io.o parse.o -o hycom_profile_hybgen_LinuxICE
+hycom_profile_hybgen.f(308): error #6418: This name has already been assigned a data type.   [LP]
+      integer i,j,kk,n, lp,nstep, i0,j0,itest,jtest
+------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+compilation aborted for hycom_profile_hybgen.f (code 1)
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_hybgen
+/bin/rm -f hycom_profile_hybgen
+chmod a+rx hycom_profile_hybgen_LinuxICE
+/bin/ln -s hycom_profile_hybgen_LinuxICE hycom_profile_hybgen
+end
+if ( ! -e hycom_profile_hybgen+_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile_hybgen+.f -shared-intel hycom_profile_lib.o hycom_endian_io.o parse.o -o hycom_profile_hybgen+_LinuxICE
+hycom_profile_hybgen+.f(308): error #6418: This name has already been assigned a data type.   [LP]
+      integer i,j,kk,n, lp,nstep, i0,j0,itest,jtest
+------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA0.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA0.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [SIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDT]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+---------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [DSIGDS]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+----------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [TOFSIG]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-----------------------------^
+hycom_profile_hybgen_SIGMA2.h(2): remark #7713: This statement function has not been used.   [KAPPAF]
+      real sig,dsigdt,dsigds,tofsig,sofsig,kappaf,kappaf1,kappafs,
+-------------------------------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [SIGLOC]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+-----------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDT]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+------------------^
+hycom_profile_hybgen_SIGMA2.h(3): remark #7713: This statement function has not been used.   [DSIGLOCDS]
+     &     sigloc,dsiglocdt,dsiglocds,tofsigloc
+----------------------------^
+compilation aborted for hycom_profile_hybgen+.f (code 1)
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_profile_hybgen+
+/bin/rm -f hycom_profile_hybgen+
+chmod a+rx hycom_profile_hybgen+_LinuxICE
+/bin/ln -s hycom_profile_hybgen+_LinuxICE hycom_profile_hybgen+
+end

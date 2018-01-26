@@ -1,0 +1,80 @@
+source ../Make_ncdf.src
+setenv NCDF /software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14
+setenv EXTRANCDF -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf
+/bin/rm -f netcdf.mod libnetcdf.a
+/bin/rm -f typesizes.mod
+setenv OS `/bin/uname`
+/bin/uname
+if ( Linux == Linux ) then
+if ( `/bin/uname -m` == alpha ) then
+/bin/uname -m
+if ( `/bin/uname -m` == x86_64 ) then
+/bin/uname -m
+setenv OS Linux64
+endif
+setenv OS LinuxICE
+endif
+switch ( LinuxICE )
+setenv FC ifort
+setenv FFLAGS -g -O3 -fp-model source -convert big_endian
+setenv FLIBS -shared-intel
+setenv CC icc
+setenv CFLAGS -O
+breaksw
+foreach f ( hycom_binning_nc hycom_scrip_nc )
+if ( ! -e hycom_binning_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_binning_nc.F hycom_endian_io.o parse.o -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o hycom_binning_nc_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_binning_nc
+/bin/rm -f hycom_binning_nc
+chmod a+rx hycom_binning_nc_LinuxICE
+/bin/ln -s hycom_binning_nc_LinuxICE hycom_binning_nc
+end
+if ( ! -e hycom_scrip_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_scrip_nc.F hycom_endian_io.o parse.o -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o hycom_scrip_nc_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_scrip_nc
+/bin/rm -f hycom_scrip_nc
+chmod a+rx hycom_scrip_nc_LinuxICE
+/bin/ln -s hycom_scrip_nc_LinuxICE hycom_scrip_nc
+end
+foreach f ( hycom_profile2z_nc hycom_profile2s_nc hycom_seaice_nc )
+if ( ! -e hycom_profile2z_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile2z_nc.F hycom_profile_lib.o hycom_endian_io.o parse.o -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o hycom_profile2z_nc_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_profile2z_nc
+/bin/rm -f hycom_profile2z_nc
+chmod a+rx hycom_profile2z_nc_LinuxICE
+/bin/ln -s hycom_profile2z_nc_LinuxICE hycom_profile2z_nc
+end
+if ( ! -e hycom_profile2s_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_profile2s_nc.F hycom_profile_lib.o hycom_endian_io.o parse.o -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o hycom_profile2s_nc_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_profile2s_nc
+/bin/rm -f hycom_profile2s_nc
+chmod a+rx hycom_profile2s_nc_LinuxICE
+/bin/ln -s hycom_profile2s_nc_LinuxICE hycom_profile2s_nc
+end
+if ( ! -e hycom_seaice_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian hycom_seaice_nc.F hycom_profile_lib.o hycom_endian_io.o parse.o -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o hycom_seaice_nc_LinuxICE
+else if ( -f `find ${f}.F -prune -newer ${f}_${OS}` ) then
+touch hycom_seaice_nc
+/bin/rm -f hycom_seaice_nc
+chmod a+rx hycom_seaice_nc_LinuxICE
+/bin/ln -s hycom_seaice_nc_LinuxICE hycom_seaice_nc
+end
+foreach f ( wind_stat_nc wind_stat_range_nc )
+if ( ! -e wind_stat_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_nc.f -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o wind_stat_nc_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch wind_stat_nc
+/bin/rm -f wind_stat_nc
+chmod a+rx wind_stat_nc_LinuxICE
+end
+if ( ! -e wind_stat_range_nc_LinuxICE ) then
+ifort -g -O3 -fp-model source -convert big_endian wind_stat_range_nc.f -I/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/include -L/software/apps/netcdf/4.3.2/i1402-hdf5-1.8.14/lib -lnetcdff -lnetcdf -o wind_stat_range_nc_LinuxICE
+else if ( -f `find ${f}.f -prune -newer ${f}_${OS}` ) then
+touch wind_stat_range_nc
+/bin/rm -f wind_stat_range_nc
+chmod a+rx wind_stat_range_nc_LinuxICE
+end
