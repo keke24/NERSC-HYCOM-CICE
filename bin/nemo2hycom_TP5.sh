@@ -95,11 +95,16 @@ for source_archv in $ncfiles ; do
     year=$(echo ${infile} | cut -c30-33)
     month=$(echo ${infile} | cut -c34-35)
     day=$(echo ${infile} | cut -c36-37)
-    nemo_archv=archv.$(date -u -d $year-$month-$day +%Y_%j)_00
+    # there seems to be a 1 day offset between this and forecast scripts
+    jday=$(date2julday $year $month $day)
+    doy=$(echo $jday | ${MAINDIR}/Subprogs/julday2dayinyear_out)
+    doy=$(echo 00$doy | tail -4c)
+    nemo_archv=archv.${year}_${doy}_00
+    echo "nemo_archv = $nemo_archv"
     #
 	# (1) Create archive [ab] files from the MERCATOR netcdf file.
 	#
-	echo "Calling nemo2archvz.py"
+	echo "Calling nemo2archvz_TP5.py"
 	nemo2archvz_TP5.py ${CDF_NEMO} ${NESTDIR} $source_archv --iexpt ${iexpt} --iversn ${iversn} --yrflag ${yrflag}
 	
 	#
@@ -107,8 +112,7 @@ for source_archv in $ncfiles ; do
 	#
 	echo "Calling remap_nemo_TP5.sh"
 	#remap_nemo_TP5.sh $(cat archvname.txt)
-    echo $(cat archvname.txt)
-    echo $source_archv
-    echo $nemo_archv
+    echo "infput file $source_archv"
+    echo "what I think it should be $nemo_archv"
 	remap_nemo_TP5.sh ${nemo_archv}
 done

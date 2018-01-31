@@ -34,20 +34,20 @@ def main(infile,blo,bla,shapiro_passes,resolution=None,cutoff=5.) :
    scpy=gfile.read_field("scpy")
    width=numpy.median(scpx)
    logger.info("Grid median resolution:%8.2f km "%(width/1000.))
-
+   bathyDir="/nobackup/prod2/sm_grasu/ModelInput/bathymetry/GEBCO/"
    # GEBCO only - TODO: move logic to gebco set
    if resolution is None  :
       if width  > 20 :
-         dfile="/work/shared/nersc/msc/ModelInput/bathymetry/GEBCO_2014/GEBCO_2014_2D_median20km.nc"
+         dfile=bathyDir+"GEBCO_2014_2D_median20km.nc"
       elif width > 8 :
-         dfile="/work/shared/nersc/msc/ModelInput/bathymetry/GEBCO_2014/GEBCO_2014_2D_median8km.nc"
+         dfile=bathyDir+"GEBCO_2014_2D_median8km.nc"
       elif width > 4 :
-         dfile="/work/shared/nersc/msc/ModelInput/bathymetry/GEBCO_2014/GEBCO_2014_2D_median4km.nc"
+         dfile=bathyDir+"GEBCO_2014_2D_median4km.nc"
       else :
-         dfile="/work/shared/nersc/msc/ModelInput/bathymetry/GEBCO_2014/GEBCO_2014_2D.nc"
+         dfile=bathyDir+"GEBCO_2014_2D.nc"
       logger.info ("Source resolution not set - choosing datafile %s"%dfile)
    else :
-      dfile="/work/shared/nersc/msc/ModelInput/bathymetry/GEBCO_2014/GEBCO_2014_2D_median%dkm.nc" % resolution
+      dfile=bathyDir+"GEBCO_2014_2D_median%dkm.nc" % resolution
       logger.info ("Source resolution set to %d - trying to use datafile %s"%dfile)
    gebco = modeltools.forcing.bathy.GEBCO2014(filename=dfile)
    w2=gebco.regrid(plon,plat,width=width)
