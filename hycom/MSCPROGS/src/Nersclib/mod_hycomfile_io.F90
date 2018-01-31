@@ -276,9 +276,15 @@ contains
          read(nop,316) ctitle,df%iversn,df%iexpt,df%yrflag
          !!get dump time from filename
          !!TODO: what if under 1 hour?
-         read(df%filebase(7:10),'(i4.4)') df%iyear
-         read(df%filebase(12:14),'(i3.3)') df%iday
-         read(df%filebase(16:17),'(i2.2)') df%ihour
+         !read(df%filebase(7:10),'(i4.4)') df%iyear
+         !read(df%filebase(12:14),'(i3.3)') df%iday
+         !read(df%filebase(16:17),'(i2.2)') df%ihour
+         read(df%filebase(10:13),'(i4.4)') df%iyear
+         read(df%filebase(15:17),'(i3.3)') df%iday
+         read(df%filebase(19:21),'(i2.2)') df%ihour
+         print*,'year is ', df%iyear
+         print*,'day is ',df%iday
+         print*,'hour is ',df%ihour
          df%imin  = 0
          df%isec  = 0
          write(df%ctime,'(i2.2,i2.2,i2.2)') df%ihour,df%imin,df%isec
@@ -724,8 +730,8 @@ contains
    elseif (trim(df%ftype)=="nersc_weekly") then
       call HFReadField(df,dp,idm,jdm,'pres    ',coord,tlevel)
       if (trim(units2) == 'pressure') dp=dp*onem
-   elseif (trim(df%ftype)=="archv".or.trim(df%ftype)=="archv_wav"&
-          .or.trim(df%ftype)=="archm") then
+   elseif (trim(df%ftype)=="archv" .or. trim(df%ftype)=="archv_wav" .or. &
+           trim(df%ftype)=="archm") then
       call HFReadField(df,dp,idm,jdm,'thknss  ',coord,tlevel)
       if (trim(units2) == 'meter') dp=dp/onem
    else
