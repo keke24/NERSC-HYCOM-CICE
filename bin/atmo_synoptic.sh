@@ -41,14 +41,14 @@ cd       $S || { echo " Could not descend scratch dir $S" ; exit 1;}
 # --- Sanity check on forcing option
 #
 ROOTPATH=""
-if [ ${forcing:0:4} == "erai" ] ; then
+if [ "${forcing:0:4}" == "erai" ] ; then
    #xmlfile=$BASEDIR/../input/era-interim.xml
    xmlfile=$INPUTDIR/era-interim.xml
    # if ERAI_PATH is set, it will override rootPath in xml file
    if [[ -n $ERAI_PATH ]] ; then
       ROOTPATH=$ERAI_PATH
    fi
-elif [ ${forcing:0:5} == "ec_op" ] ; then
+elif [ "${forcing:0:5}" == "ec_op" ] ; then
 	xmlfile=${INPUTDIR}/ec_op.xml
 	if [[ -n $ECNC_PATH ]] ; then
 		ROOTPATH=$ECNC_PATH

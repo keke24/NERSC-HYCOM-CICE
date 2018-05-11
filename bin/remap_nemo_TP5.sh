@@ -34,7 +34,7 @@ iscan=15
 usage="
    In order to use this routine, you need to first do mapping between outter and inner regions,
    using ../bin/isuba_gmapi.sh new region. Note that your current directory is in outer region
-   experiment folder. NOTe: change to run in inner region directory
+   experiment folder. TODO: change to run in inner region directory
 
    Usage:
       $(basename $0) [-s iscan] NEMO mesh file  new_experiment_path MERCATOR netcdf files
@@ -177,6 +177,7 @@ touch $logfile && rm $logfile
 #
 echo ${N}/regional.depth.a
 echo "Processing ${N}/${target_archv}"
+echo ${N}/${target_archv}${L}
 
 ${prog_subreg}   <<EOF
 ${N}/regional.grid.a
@@ -192,6 +193,8 @@ ${target_jdm}	  'jdm   ' = target latitudinal  array size
 0	        'smooth' = smooth interface depths    (0=F,1=T)
 $iscan      'iscan'
 EOF
+
+
 #
 echo "Log can be found in $logfile"
 echo "    ($h) *** prepare for nesting folder"

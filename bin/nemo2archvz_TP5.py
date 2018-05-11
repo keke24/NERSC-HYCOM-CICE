@@ -290,8 +290,7 @@ def main(meshfile,nestdir,file,iexpt=10,iversn=22,yrflag=3) :
         # for cases that there is no information of next day.
         #
         fnametemplate="archv.%Y_%j"
-        # one day offset between datetime and year day and unix year day
-        deltat=datetime.datetime(refy,refm,refd,0,0,0)+datetime.timedelta(hours=tmp3)-datetime.timedelta(days=1)
+        deltat=datetime.datetime(refy,refm,refd,0,0,0)+datetime.timedelta(hours=tmp3)
         oname=deltat.strftime(fnametemplate)+"_00"
 
     logger.debug("filename prefix is {}".format(oname))
@@ -323,9 +322,9 @@ def main(meshfile,nestdir,file,iexpt=10,iversn=22,yrflag=3) :
     # Save 2D fields (here only ubaro & vbaro)
     #
     zeros=numpy.zeros(mbathy.shape)
-    flnm = open(oname+'.txt', 'w')
-    flnm.write(oname)
-    flnm.close()
+    #flnm = open(oname+'.txt', 'w')
+    #flnm.write(oname)
+    #flnm.close()
     #
     outfile = abfile.ABFileArchv(nestdir+"/data/"+oname,"w",iexpt=iexpt,iversn=iversn,yrflag=yrflag,)
     outfile.write_field(zeros,                   ip,"montg1"  ,0,0,0,0)

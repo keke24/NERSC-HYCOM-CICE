@@ -69,7 +69,7 @@ source EXPT.src || { echo "Could not source ./EXPT.src" ; exit 1 ; }
 source ${BASEDIR}/REGION.src || { echo "Could not source ${BASEDIR}/REGION.src" ; exit 1 ; }
 
 # add MESH file for root directory for nesting
-CDF_NEMO=${NESTROOT}/topo/GLO_MFC_001_24_MESH.nc
+CDF_NEMO=${NESTROOT}/topo/GLO_MFC_001_25_MESH.nc
 
 # add nesting directory
 NESTDIR=${NESTROOT}/expt_${NESTEXPT}

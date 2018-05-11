@@ -127,7 +127,7 @@ ${pget} ${BASEDIR}/topo/regional.grid.a regional.grid.a  || { echo "Could not ge
 ${pget} ${BASEDIR}/topo/depth_${R}_${T}.a regional.depth.a || { echo "Could not get regional.depth.a file " ; exit 1 ; }
 ${pget} ${BASEDIR}/topo/depth_${R}_${T}.b regional.depth.b  || { echo "Could not get regional.depth.b file " ; exit 1 ; }
 ${pget} ${BASEDIR}/topo/grid.info grid.info  || { echo "Could not get file rivers.dat " ; exit 1 ; }
-
+${pget} $MSCPROGS/src/TRIP/Data/globalNEWS_2012.dat GlobalNEWS.dat
 
 # Create new fils
 if [ $create -ne 0 ] ; then
@@ -147,12 +147,13 @@ fi
 # This uses trip_era40_clim.nc (from trip_flow) to interpolate to model grid. Uses conformal mapping
 echo
 echo "**Interpolating TRIP river flow to hycom"
-$MSCPROGS/bin_setup/trip_tohycom $src $across $along   || { echo "Error when running trip_tohycom  (see errors above)" ; exit 1 ; }
+$MSCPROGS/bin_setup/trip_tohycom $src $along $across    || { echo "Error when running trip_tohycom  (see errors above)" ; exit 1 ; }
+$MSCPROGS/bin_setup/trip_tobiorivGN
 
-
+# For now the river forcing is  experiment-dependent
 for i in forcing.*.[ab] ; do
    new=$(echo $i | sed "s/^forcing\.//")
-   mv $i $D
+   mv $i ../$new
 done
 #
 echo "Diagnostics can be found in directory $S"

@@ -212,8 +212,16 @@ if __name__ == "__main__" :
    class ClimParseAction(argparse.Action) :
      def __call__(self, parser, args, values, option_string=None):
        tmp = values.split(",")
-       tmp = [float(elem) for elem in tmp[0:2]]
+       print "tmp is {}".format(tmp)
+       tmp[0]=float(tmp[0][1:])
+       tmp[1]=float(tmp[1][:-1])
+       #tmp = [float(elem) for elem in tmp[0:2]]
        setattr(args, self.dest, tmp)
+   #class ClimParseAction(argparse.Action) :
+   #  def __call__(self, parser, args, values, option_string=None):
+   #    tmp = values.split(",")
+   #    tmp = [float(elem) for elem in tmp[0:2]]
+   #    setattr(args, self.dest, tmp)
 
 
    parser = argparse.ArgumentParser(description='')
